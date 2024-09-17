@@ -94,6 +94,9 @@ export default class Joy extends Buttons {
         </div>
         <input class="btn btnD key-down key-img-config" type="button" value="" data-key="down">
       </div>
+      <div>
+        <canvas class="" data-key="analog_l">
+      </div>
       <div class="btns">
         <input class="btn btnD key-a key-img-config" type="button" value="" data-key="a">
         <input class="btn btnD key-b key-img-config" type="button" value="" data-key="b">
@@ -167,18 +170,3 @@ export default class Joy extends Buttons {
   }
 }
 
-
-
-
-
-// // Impede o menu de contexto ao segurar toque
-// document.addEventListener('contextmenu', (event) => {
-//   event.preventDefault();
-// });
-
-// // Para dispositivos móveis, impede o toque prolongado
-// document.addEventListener('touchstart', (event) => {
-//   if (event.touches.length > 1) {
-//     event.preventDefault();
-//   }
-// }, { passive: false });
