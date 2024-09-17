@@ -1,19 +1,6 @@
 import Joy from './Joy.js';
 import Player from './Player.js';
 
-
-// Impede o menu de contexto ao segurar toque
-document.addEventListener('contextmenu', function (event) {
-  event.preventDefault();
-});
-
-// Para dispositivos móveis, impede o toque prolongado
-document.addEventListener('touchstart', function (event) {
-  if (event.touches.length > 1) {
-    event.preventDefault();
-  }
-}, { passive: false });
-
 const cnv = document.querySelector('canvas')
 const ctx = cnv.getContext('2d')
 

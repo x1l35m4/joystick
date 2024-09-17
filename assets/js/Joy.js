@@ -31,14 +31,15 @@ export default class Joy extends Buttons {
     this.id = Joy.idGenereted();
     this.px = px;
     this.py = py;
-    
+
     this.load();
   }
-  
-  load(){
+
+  load() {
+    Joy.configTouchInTheStart();
     this.createJoyElement();
   }
-  
+
   createJoyElement() {
     const joy = document.createElement("div");
     joy.id = `joy${this.id}`;
@@ -102,14 +103,14 @@ export default class Joy extends Buttons {
 
   mapearBotaoComHTML() {
     const objButtons = [
-       this.btnCenter,
-       this.btnLeft,
-       this.btnRight,
-       this.btnUp,
-       this.btnDown,
-       this.btnA,
-       this.btnB,
-      ];
+      this.btnCenter,
+      this.btnLeft,
+      this.btnRight,
+      this.btnUp,
+      this.btnDown,
+      this.btnA,
+      this.btnB,
+    ];
 
     objButtons.forEach((btn) => {
       for (let htmlBtn of this.htmlElementButtons) {
@@ -133,12 +134,51 @@ export default class Joy extends Buttons {
 
   }
 
+  static configTouchInTheStart() {
+    if (this.isTouchListenerConfigured === undefined) {
+      this.isTouchListenerConfigured = false;
+    }
+    const preventDefault = (event) => event.preventDefault();
+
+    const preventDefaultIf = (event) => {
+      if (event.touches.length > 1) event.preventDefault()
+    };
+
+    if (!this.isTouchListenerConfigured) {
+      document.removeEventListener("contextmenu", preventDefault);
+      document.removeEventListener("touchstart", preventDefaultIf, { passive: false });
+
+      // Impede o menu de contexto ao segurar toque
+      document.addEventListener("contextmenu", preventDefault);
+      // Para dispositivos móveis, impede o toque prolongado
+      document.addEventListener("touchstart", preventDefaultIf, { passive: false });
+      
+      this.isTouchListenerConfigured = true;
+    }
+  }
+
   static idGenereted() {
     if (!this.id) this.id = 0;
     return this.id++;
   }
-  
-  static addNew(px, py){
-    Joy.group.push(new this(px,py))
+
+  static addNew(px, py) {
+    Joy.group.push(new this(px, py))
   }
 }
+
+
+
+
+
+// // Impede o menu de contexto ao segurar toque
+// document.addEventListener('contextmenu', (event) => {
+//   event.preventDefault();
+// });
+
+// // Para dispositivos móveis, impede o toque prolongado
+// document.addEventListener('touchstart', (event) => {
+//   if (event.touches.length > 1) {
+//     event.preventDefault();
+//   }
+// }, { passive: false });

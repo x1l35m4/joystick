@@ -1,3 +1,5 @@
+import entityDefaultVars from "./entityDefaultVars.js";
+
 export default class Entity {
   static id = 0;
   static group = [];
@@ -10,6 +12,7 @@ export default class Entity {
     this.h = h;
     this.vx=0;
     this.vy=0;
+    this.velMax= entityDefaultVars.maxSpeedClassA;
     this.load();
   }
   
