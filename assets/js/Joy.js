@@ -94,8 +94,8 @@ export default class Joy extends Buttons {
         </div>
         <input class="btn btnD key-down key-img-config" type="button" value="" data-key="down">
       </div>
-      <div>
-        <canvas class="" data-key="analog_l">
+      <div class="analog">
+        <canvas class="analog-l key-img-config" data-key="analog_l">
       </div>
       <div class="btns">
         <input class="btn btnD key-a key-img-config" type="button" value="" data-key="a">

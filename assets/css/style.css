@@ -89,6 +89,12 @@ canvas {
   margin: 10px;
 }
 
+.analog-l{
+  background-image: url("/assets/img/analogicl.png");
+  width: 192px;
+  height: 192px;
+}
+
 .btns{
   display:flex;
   align-items: center;

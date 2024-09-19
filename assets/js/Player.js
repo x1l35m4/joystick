@@ -10,7 +10,7 @@ export default class Player extends Entity {
   
   update(){
     this.vx = this.joy.btnLeft.active ? -1 : this.joy.btnRight.active ? 1 : 0;
-    this.vy = this.joy.btnUp.active ? -1 : this.joy.btnDown.active ? this.vy : 0;
+    this.vy = this.joy.btnUp.active ? -1 : this.joy.btnDown.active ? 1 : 0;
     
     this.px += this.velMax * this.vx;
     this.py += this.velMax * this.vy;
